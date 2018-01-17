@@ -127,3 +127,9 @@ fi
 alias h='history | tail'
 alias open='xdg-open'
 alias grep='grep --color=auto'
+
+
+#########################################################
+# Git Initialize Step
+#########################################################
+git pull >/dev/null
