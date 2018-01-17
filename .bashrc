@@ -115,3 +115,13 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+
+
+
+#########################################################
+# Aliases
+#########################################################
+alias h='history | tail'
+alias open='xdg-open'
+alias grep='grep --color=auto'
