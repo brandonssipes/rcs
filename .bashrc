@@ -128,6 +128,7 @@ alias h='history | tail'
 alias open='xdg-open'
 alias grep='grep --color=auto'
 alias lab="ssh -Y m195922@mich316csd21u.academy.usna.edu"
+alias jeremy="ssh -Y sipes@site.furiousmac.com"
 
 #########################################################
 # Git Initialize Step
