@@ -132,4 +132,5 @@ alias lab="ssh -Y m195922@mich316csd21u.academy.usna.edu"
 #########################################################
 # Git Initialize Step
 #########################################################
+# If not in ~ this fails
 git pull >/dev/null &
