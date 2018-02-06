@@ -134,4 +134,6 @@ alias jeremy="ssh -Y sipes@site.furiousmac.com"
 # Git Initialize Step
 #########################################################
 # If not in ~ this fails
+cd
 git pull >/dev/null &
+cd -
