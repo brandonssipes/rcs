@@ -141,3 +141,4 @@ alias jeremy="ssh -Y sipes@site.furiousmac.com"
 cd
 git pull >/dev/null &
 cd -
+clear
