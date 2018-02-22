@@ -11,7 +11,14 @@ HISTFILESIZE=2000
 #   WINDOW  
 ######################################
 shopt -s checkwinsize
-
+#Window title is m195922@directory
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
 
 
 
