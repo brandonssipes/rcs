@@ -39,7 +39,7 @@ alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias lab="ssh -Y m195922@mich316csd21u.academy.usna.edu"
 alias jeremy="ssh -Y sipes@site.furiousmac.com"
-alias propoise="ssh -Y bssipes@gigether.net"
+alias porpoise="ssh -Y bssipes@gigether.net"
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
