@@ -14,7 +14,7 @@ shopt -s checkwinsize
 #Window title is m195922@directory
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\033[01;32m\]\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\[\033[0m\]\$ "
     ;;
 *)
     ;;
