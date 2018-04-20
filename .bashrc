@@ -49,6 +49,6 @@ fi
 #########################################################
 # If not in ~ this fails
 cd
-git pull >/dev/null &
+git pull 2>&1 >/dev/null &
 cd -
 clear
