@@ -13,7 +13,7 @@ au BufRead,BufNewFile *.sage setfiletype python
 
 autocmd FileType make set noexpandtab softtabstop=0
 autocmd FileType text set spell linebreak textwidth=72
-autocmd FileType markdown set spell linebreak textwidth=72 softtabstop=4 shiftwi                                                                                        dth=4
+autocmd FileType markdown set spell linebreak textwidth=72 softtabstop=4 shiftwidth=4
 autocmd Filetype python set softtabstop=4 shiftwidth=4
 autocmd Filetype php set nocindent nosmartindent indentexpr=""
 autocmd Filetype php set autoindent
