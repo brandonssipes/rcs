@@ -68,45 +68,49 @@ class Bob:
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server_address = ('localhost', port)
         self.sock.connect(server_address)
-        self.sock.send("hi\n".encode('utf8'))
+        self.Enc = self.sock.recv(162)
+        self.pubkey = RSA.importKey(self.Enc)
 
     def first(self, i):
-        b = (self._mInt >> i)%2
-        #xx = [load(f) for f in ("x0", "x1")]
+        self.b = (self._mInt >> i)%2
+
         xx = [0]*2
-        xx[0] = self.sock.recv(1024)
-        xx[1] = self.sock.recv(1024)
-        #Enc = load("Enc")
-        Enc = self.sock.recv(9999)
+        xx[0] = self.sock.recv(128)
+        xx[1] = self.sock.recv(128)
         rgen = Crypto.Random.new()
 
         bytelen = len(xx[0])
-        pubkey = RSA.importKey(Enc)
 
         # Generate random nonce y and encrypted response u.
         # Have to iterate until both decryptions on the other end are less
         # than the modulus, expected O(1) times.
         while True:
             self._y = rgen.read(bytelen)
+            # There were lots of issues when the first byte was null...
+            if(self._y[0] == 0):
+                continue
             try:
-                u = xor(pubkey.encrypt(self._y, None)[0], xx[b])
+                u = xor(self.pubkey.encrypt(self._y, None)[0], xx[self.b])
                 # this encryption is just to check the bounds of y
-                pubkey.encrypt(xor(u, xx[1-b]), None)
+                self.pubkey.encrypt(xor(u, xx[1-self.b]), None)
                 break
             except ValueError:
                 pass
 
-        #store('u', u)
         self.sock.send(u)
 
     def second(self, pos):
-        #vv = [load(f) for f in ("v0", "v1")]
         vv = [0]*2
-        vv[0] = self.sock.recv(1024)
-        vv[1] = self.sock.recv(1024)
-        self._xorm = xor(self._xorm, xor(self._y, vv[(self._mInt >> pos)%2]))
+        vv[0] = self.sock.recv(32)
+        vv[1] = self.sock.recv(32)
+        # tested and (self._mInt >> pos)%2 is correct everytime
+        # and vv[0] == v0 and vv[1] == v1
+        # but sometimes xor(y,vv[b]) != nonce[pos][b])
+        xorCurr = xor(self._xorm, xor(self._y, vv[self.b]))
+        self._xorm = xorCurr
     
     def third(self):
+        self.sock.send(self._xorm)
         return self._xorm
 
 if __name__ == '__main__':
