@@ -37,5 +37,5 @@ map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
 map <F1> <Esc>
 imap <F1> <Esc>
-
+inoremap jj <Esc>
 
