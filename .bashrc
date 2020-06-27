@@ -38,18 +38,8 @@ alias h='history | tail'
 alias open='xdg-open'
 alias grep='grep --color=auto'
 alias ls='ls -F --color=auto'
-alias lab="ssh -Y m195922@mich316csd21u.academy.usna.edu"
 alias jeremy="ssh -Y sipes@site.furiousmac.com"
 alias porpoise="ssh -Y bssipes@gigether.net"
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
-#########################################################
-# Git Initialize Step
-#########################################################
-# If not in ~ this fails
-cd
-git pull 2>&1 >/dev/null &
-cd -
-clear
